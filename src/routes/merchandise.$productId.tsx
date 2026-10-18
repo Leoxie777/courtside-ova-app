@@ -1,0 +1,7 @@
+import { createFileRoute, Link } from '@tanstack/react-router';
+import { products } from '@/lib/promotions';
+import image from '@/assets/merchandise.jpg';
+import { Button } from '@/components/ui/button';
+import { PageTitle } from '@/components/ui-kit';
+export const Route=createFileRoute('/merchandise/$productId')({head:({params})=>{const name=products.find(p=>p.id===params.productId)?.name??'Merchandise';return {meta:[{title:`${name} — Courtside`},{name:'description',content:'Courtside demonstration merchandise collection. No real purchases.'},{property:'og:title',content:`${name} — Courtside`},{property:'og:description',content:'Courtside demonstration merchandise collection. No real purchases.'},{property:'og:type',content:'website'},{name:'twitter:card',content:'summary_large_image'}]};},component:Product});
+function Product(){const {productId}=Route.useParams(); const p=products.find(p=>p.id===productId);return <><PageTitle title={p?.name??'Product unavailable'} sub="Demo merchandise"/>{p&&<><div className="aspect-[4/3] max-w-md overflow-hidden rounded-lg"><img src={image} width={1536} height={768} alt={p.name} className={`merch-image ${p.imageClass}`}/></div><p className="mt-4 text-xl font-bold">CA${p.price.toFixed(2)}</p><p className="my-3 text-sm text-muted-foreground">Mock product and price. An official shop has not been connected; purchases are unavailable.</p></>}<Button variant="outline" asChild><Link to="/">Back to Home</Link></Button></>;}

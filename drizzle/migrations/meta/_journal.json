@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1792272505253,
+      "tag": "0000_courtside_organizer_data",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1792279116742,
+      "tag": "0001_announcement_publication_state",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1792279221910,
+      "tag": "0002_preserve_public_announcement_read",
+      "breakpoints": true
+    }
+  ]
+}

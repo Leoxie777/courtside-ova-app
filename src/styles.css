@@ -1,0 +1,101 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-display: "Barlow Condensed", sans-serif;
+  --font-sans: "Barlow", sans-serif;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-live: var(--live);
+  --color-success: var(--success);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ink: var(--ink);
+  --color-ink-foreground: var(--ink-foreground);
+  --color-overlay: var(--overlay);
+}
+
+:root {
+  --radius: 0.875rem;
+  --background: #f6f7f9;
+  --foreground: #1e2229;
+  --card: #ffffff;
+  --card-foreground: #1e2229;
+  --primary: #81be41;
+  --primary-foreground: #181b1e;
+  --secondary: #eef1f4;
+  --secondary-foreground: #2d3239;
+  --muted: #f0f2f5;
+  --muted-foreground: #6b7280;
+  --accent: #55565a;
+  --accent-foreground: #ffffff;
+  --destructive: oklch(0.6 0.22 27);
+  --destructive-foreground: #ffffff;
+  --live: oklch(0.62 0.23 25);
+  --success: #81be41;
+  --ink: #23272a;
+  --ink-foreground: #ffffff;
+  --border: #e2e5e9;
+  --input: #e2e5e9;
+  --ring: #81be41;
+  --gradient-hero: linear-gradient(135deg, #23272a, #36393f);
+  --overlay: #000000cc;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: 0;
+  }
+  html {
+    color-scheme: light;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse-dot {
+    animation: none;
+  }
+}
+
+@utility bg-hero {
+  background-image: var(--gradient-hero);
+}
+@utility pulse-dot {
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+.merch-image { width: 300%; max-width: none; height: 100%; object-fit: fill; }
+.merch-tee { transform: translateX(0); }
+.merch-hoodie { transform: translateX(-33.333333%); }
+.merch-tote { transform: translateX(-66.666667%); }

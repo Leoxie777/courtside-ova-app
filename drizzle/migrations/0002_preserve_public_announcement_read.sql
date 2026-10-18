@@ -1,0 +1,2 @@
+ALTER POLICY "Public announcements" ON public.announcements USING (true);
+COMMENT ON COLUMN public.announcements.active IS 'Public event notice visibility flag: true shows notice; false deactivates it. Content remains public as with existing event announcements.';

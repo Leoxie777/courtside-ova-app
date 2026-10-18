@@ -1,0 +1,6 @@
+import { createFileRoute, Link } from '@tanstack/react-router';
+import { PageTitle, AnnouncementCard } from '@/components/ui-kit';
+import { useStore } from '@/lib/store';
+import { Button } from '@/components/ui/button';
+export const Route=createFileRoute('/announcements/$id')({head:()=>({meta:[{title:'Announcement Details — Courtside'},{name:'description',content:'Urgent updates and announcements for your selected volleyball event.'},{property:'og:title',content:'Announcement Details — Courtside'},{property:'og:description',content:'Urgent updates and announcements for your selected volleyball event.'},{property:'og:type',content:'website'},{name:'twitter:card',content:'summary_large_image'}]}),component:AnnouncementDetails});
+function AnnouncementDetails(){const {id}=Route.useParams(); const {announcements}=useStore(); const a=announcements.find(a=>a.id===id&&a.active!==false);return <><PageTitle title="Announcement"/>{a?<AnnouncementCard a={a}/>:<p className="text-sm text-muted-foreground">This announcement is inactive or not available for the selected event.</p>}<Button variant="outline" asChild className="mt-4"><Link to="/event">Event details</Link></Button></>;}
